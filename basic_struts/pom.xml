@@ -45,6 +45,17 @@
 	</dependencies>
 
 	<build>
-		<finalName> basic_struts</finalName>
+		<finalName>basic_struts</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				 <version>2.3</version>
+				<configuration>
+					<webXml>${project.basedir}\src\main\webapp\WEB-INF\web.xml</webXml>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
+
 </project>
