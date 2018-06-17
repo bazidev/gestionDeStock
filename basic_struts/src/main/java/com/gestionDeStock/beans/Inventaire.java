@@ -28,6 +28,18 @@ public class Inventaire implements Serializable{
 	
 	@Column(name="dateInv")
 	private Date dateInv;
+	
+	@Transient
+	private String nomArt;
+	
+	
+	public String getNomArt() {
+		return nomArt;
+	}
+
+	public void setNomArt(String nomArt) {
+		this.nomArt = nomArt;
+	}
 
 	public int getCodeInv() {
 		return codeInv;

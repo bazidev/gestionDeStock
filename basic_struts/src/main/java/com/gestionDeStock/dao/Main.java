@@ -16,7 +16,7 @@ public class Main {
 				System.out.println(i.getCodeArt());
 			}
 			
-			List<Achat> achts = (List<Achat>) AchatsDao.inventaireByDateAndArticle(1, "2018-06-12	");
+			List<Achat> achts = (List<Achat>) AchatsDao.inventaireByDateAndArticle(1, "2018-06-12");
 			for(Achat i : achts)
 			{
 				System.out.println(i.getCodeArt());
@@ -45,6 +45,8 @@ public class Main {
 				System.err.println(art.getPrixart());
 				System.out.println(art.getQuantite());
 			}
+			
+			LoginDao.login("admin", "admin");
 	}
 
 }

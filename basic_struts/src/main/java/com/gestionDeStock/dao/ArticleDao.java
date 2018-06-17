@@ -155,4 +155,30 @@ public class ArticleDao {
 		
 		return quantite;
 	}
+
+
+	public static String getArticleName(int codeArt) {
+		// TODO Auto-generated method stub
+		Session session = HibernateUtil2.getSession();
+		if (session != null) {
+		
+			try {
+				Query query = session.createSQLQuery("SELECT nomart"
+						+ " FROM `article` "
+						+ " where codeart = :code");
+				query.setParameter("code", codeArt);
+				System.out.println(query.getQueryString());
+				if(!query.list().isEmpty())
+					return (String) query.uniqueResult();
+				
+			} catch (Exception exception) {
+				System.out.println("Exception occred while reading user data: " + exception.getMessage());
+				return null;
+			}
+
+		} else {
+			System.out.println("DB server down.....");
+		}
+		return null;
+	}
 }

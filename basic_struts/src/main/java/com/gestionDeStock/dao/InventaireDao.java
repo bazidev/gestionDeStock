@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import com.gestionDeStock.beans.Inventaire;
 import com.gestionDeStock.utils.HibernateUtil;
 import com.gestionDeStock.utils.HibernateUtil2;
 
@@ -19,8 +20,12 @@ public class InventaireDao {
 			try {
 				Query query = session.createQuery("from Inventaire ");
 				
-				List invs = query.list();
+				List<Inventaire> invs = query.list();
 				
+				for(Inventaire i : invs)
+				{
+					i.setNomArt(ArticleDao.getArticleName(i.getCodeArt()));
+				}
 				return invs;
 				
 			} catch (Exception exception) {
@@ -57,7 +62,11 @@ public class InventaireDao {
 		if (session != null) {
 			try {
 				Query query = session.createQuery(qr);			
-				List invs = query.list();		
+				List<Inventaire> invs = query.list();	
+				for(Inventaire i : invs)
+				{
+					i.setNomArt(ArticleDao.getArticleName(i.getCodeArt()));
+				}
 				return invs;
 			
 			} catch (Exception exception) {

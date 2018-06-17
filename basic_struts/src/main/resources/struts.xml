@@ -6,6 +6,8 @@
 <struts>
 
 	<constant name="struts.devMode" value="true" />
+	  <constant name="struts.action.extension" value="html"/> 
+	  <constant name="struts.ui.theme" value="bootstrap" />
 
 	<package name="basicstruts2" extends="struts-default">
 
@@ -13,9 +15,16 @@
 			<result>/index.jsp</result>
 		</action>
 
-		<action name="hello"
-			class="com.gestionDeStock.action.HelloWorldAction" method="execute">
-			<result name="success">/HelloWorld.jsp</result>
+		<action name="login"
+			class="com.gestionDeStock.action.LoginAction" method="execute">
+			<result name="success">/inventaire.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>
+		
+		<action name="filter-inventaire"
+			class="com.gestionDeStock.action.FilterInventaireAction" method="execute">
+			<result name="success">/inventaire.jsp</result>
+			<result name="error">/inventaire.jsp</result>
 		</action>
 	</package>
 

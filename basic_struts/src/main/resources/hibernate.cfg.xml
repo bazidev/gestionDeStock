@@ -15,6 +15,7 @@
         <property name="show_sql">false</property>
          <mapping class="com.gestionDeStock.beans.Inventaire"></mapping> 
          <mapping class="com.gestionDeStock.beans.Achat"></mapping> 
+         <mapping class="com.gestionDeStock.beans.Admin"></mapping> 
             
     </session-factory>
 </hibernate-configuration>
