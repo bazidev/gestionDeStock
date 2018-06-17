@@ -12,6 +12,6 @@
 	<h2>
 		<s:property value="messageStore" />
 	</h2>
-	<p>I've said hello <s:property value="helloCount" /> times!</p>
+	<p>I've said hello <s:property value="userName" /> times!</p>
 </body>
 </html>

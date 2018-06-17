@@ -14,7 +14,7 @@
 		</action>
 
 		<action name="hello"
-			class="org.apache.struts.helloworld.action.HelloWorldAction" method="execute">
+			class="com.gestionDeStock.action.HelloWorldAction" method="execute">
 			<result name="success">/HelloWorld.jsp</result>
 		</action>
 	</package>

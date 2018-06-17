@@ -1,7 +1,6 @@
-package org.apache.struts.helloworld.action;
+package com.gestionDeStock.action;
 
-import org.apache.struts.helloworld.model.MessageStore;
-
+import com.gestionDeStock.model.MessageStore;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class HelloWorldAction extends ActionSupport {
@@ -12,6 +11,7 @@ public class HelloWorldAction extends ActionSupport {
  
     private MessageStore messageStore;
      
+
     public String execute() throws Exception {
          
         messageStore = new MessageStore() ;

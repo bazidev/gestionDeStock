@@ -1,4 +1,4 @@
-package org.apache.struts.helloworld.model;
+package com.gestionDeStock.model;
 
 public class MessageStore {
 	 
