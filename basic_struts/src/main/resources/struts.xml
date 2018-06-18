@@ -26,6 +26,18 @@
 			<result name="success">/inventaire.jsp</result>
 			<result name="error">/inventaire.jsp</result>
 		</action>
+		
+		<action name="filter-achats"
+			class="com.gestionDeStock.action.FilterAchatsAction" method="execute">
+			<result name="success">/achats.jsp</result>
+			<result name="error">/achats.jsp</result>
+		</action>
+		
+		<action name="filter-articles"
+			class="com.gestionDeStock.action.FilterArticleAction" method="execute">
+			<result name="success">/articles.jsp</result>
+			<result name="error">/articles.jsp</result>
+		</action>
 	</package>
 
 </struts>

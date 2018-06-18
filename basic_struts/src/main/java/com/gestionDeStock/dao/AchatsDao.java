@@ -5,6 +5,8 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import com.gestionDeStock.beans.Achat;
+import com.gestionDeStock.beans.Inventaire;
 import com.gestionDeStock.utils.HibernateUtil;
 import com.gestionDeStock.utils.HibernateUtil2;
 
@@ -19,14 +21,20 @@ public class AchatsDao {
 			try {
 				Query query = session.createQuery("from Achat ");
 				
-				List achts = query.list();
-				
+				List<Achat> achts = query.list();
+				for(Achat i : achts)
+				{
+					i.setNomArt(ArticleDao.getArticleName(i.getCodeArt()));
+				}
 				return achts;
 				
 			} catch (Exception exception) {
 				System.out.println("Exception occred while reading user data: " + exception.getMessage());
 				return null;
 			}
+			finally {
+			     session.close();
+			   }
 
 		} else {
 			System.out.println("DB server down.....");
@@ -57,13 +65,21 @@ public class AchatsDao {
 		if (session != null) {
 			try {
 				Query query = session.createQuery(qr);			
-				List achts = query.list();		
+				List<Achat> achts = query.list();	
+				for(Achat i : achts)
+				{
+					System.out.println(i.getCodeAchat());
+					i.setNomArt(ArticleDao.getArticleName(i.getCodeArt()));
+				}
 				return achts;
 			
 			} catch (Exception exception) {
 				System.out.println("Exception occred while reading user data: " + exception.getMessage());
 				return null;
 			}
+			finally {
+			     session.close();
+			   }
 
 		} else {
 			System.out.println("DB server down.....");

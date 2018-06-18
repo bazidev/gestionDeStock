@@ -32,6 +32,9 @@ public class InventaireDao {
 				System.out.println("Exception occred while reading user data: " + exception.getMessage());
 				return null;
 			}
+			finally {
+			     session.close();
+			   }
 
 		} else {
 			System.out.println("DB server down.....");
@@ -73,6 +76,9 @@ public class InventaireDao {
 				System.out.println("Exception occred while reading user data: " + exception.getMessage());
 				return null;
 			}
+			finally {
+			     session.close();
+			   }
 
 		} else {
 			System.out.println("DB server down.....");

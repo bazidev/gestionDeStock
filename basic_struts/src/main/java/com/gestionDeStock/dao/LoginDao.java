@@ -25,6 +25,9 @@ public class LoginDao {
 				System.out.println("Exception occred while reading user data: " + exception.getMessage());
 				return false;
 			}
+			finally {
+			     session.close();
+			   }
 
 		} else {
 			System.out.println("DB server down.....");

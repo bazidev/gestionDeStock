@@ -41,6 +41,9 @@ public class ArticleDao {
 				System.out.println("Exception occred while reading user data: " + exception.getMessage());
 				return null;
 			}
+			finally {
+			     session.close();
+			   }
 
 		} else {
 			System.out.println("DB server down.....");
@@ -74,6 +77,9 @@ public class ArticleDao {
 						System.out.println("Exception occred while reading user data: " + exception.getMessage());
 						return null;
 					}
+					finally {
+					     session.close();
+					   }
 
 				} else {
 					System.out.println("DB server down.....");
@@ -101,6 +107,9 @@ public class ArticleDao {
 							System.out.println("Exception occred while reading user data: " + exception.getMessage());
 							return 0;
 						}
+						finally {
+						     session.close();
+						   }
 
 					} else {
 						System.out.println("DB server down.....");
@@ -127,6 +136,9 @@ public class ArticleDao {
 							System.out.println("Exception occred while reading user data: " + exception.getMessage());
 							return 0;
 						}
+						finally {
+						     session.close();
+						   }
 
 					} else {
 						System.out.println("DB server down.....");
@@ -175,6 +187,9 @@ public class ArticleDao {
 				System.out.println("Exception occred while reading user data: " + exception.getMessage());
 				return null;
 			}
+			finally {
+			     session.close();
+			   }
 
 		} else {
 			System.out.println("DB server down.....");

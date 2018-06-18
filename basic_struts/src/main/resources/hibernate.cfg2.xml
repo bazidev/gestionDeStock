@@ -8,7 +8,7 @@
 
     <session-factory>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/gvente</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/gvente?zeroDateTimeBehavior=convertToNull</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.id.new_generator_mappings">false</property>

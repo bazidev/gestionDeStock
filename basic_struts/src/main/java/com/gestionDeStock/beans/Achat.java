@@ -26,6 +26,18 @@ public class Achat implements Serializable{
 	@Column(name="dateReception")
 	private Date dateReception;
 
+	@Transient
+	private String nomArt;
+	
+	
+	public String getNomArt() {
+		return nomArt;
+	}
+
+	public void setNomArt(String nomArt) {
+		this.nomArt = nomArt;
+	}
+
 	public int getCodeAchat() {
 		return codeAchat;
 	}

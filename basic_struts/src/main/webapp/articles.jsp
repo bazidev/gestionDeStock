@@ -39,9 +39,9 @@
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li ><a href="<s:url action="filter-inventaire"/>">Inventaire </a></li>
-					<li class="active"><a href="<s:url action="filter-achats"/>">Achats <span
+					<li><a href="<s:url action="filter-achats"/>">Achats</a></li>
+					<li  class="active"><a href="<s:url action="filter-articles"/>">Article <span
 							class="sr-only">(current)</span></a></li>
-					<li><a href="<s:url action="filter-articles"/>">Article</a></li>
 				</ul>
 			</div>
 
@@ -51,21 +51,8 @@
 
 		<div class="col col-lg-11" style="margin: auto; float: none">
 			<div class="row" style="margin: 30px">
-				<s:form action='filter-achats' style="margin-top:40px;">
-			
-				<div class="col-lg-6">
-					<div class="input-group">
-						<span class="input-group-btn">
-							<button class="btn btn-default">#</button>
-						</span> <select name="article" class="selectpicker" title="article .. "
-							data-live-search="true">
-							<s:iterator value="achatsAll" status="achatsStatus">
-								<option  value="<s:property value="codeArt" />"><s:property value="nomArt" /></option>
-							</s:iterator>
-						</select>
-					</div>
-					<!-- /input-group -->
-				</div>
+				<s:form action='filter-articles' style="margin-top:40px;">
+		
 				<!-- /.col-lg-6 -->
 				<div class="col-lg-6">
 					<div class="input-group">
@@ -86,19 +73,19 @@
 			<table class=" table table-striped">
 				<thead>
 					<tr>
-						<th scope="col">code d'achat</th>
+						<th scope="col">code d'article</th>
 						<th scope="col">nom d'article</th>
-						<th scope="col">quantite achete</th>
-						<th scope="col">date de reception</th>
+						<th scope="col">prix</th>
+						<th scope="col">quantite</th>
 					</tr>
 				</thead>
 				<tbody>
-					<s:iterator value="achats" status="achatsStatus">
+					<s:iterator value="articles" status="achatsStatus">
 						<tr>
-							<th scope="row"><s:property value="codeAchat" /></th>
-							<td><s:property value="nomArt" /></td>
-							<td><s:property value="qteAchete" /></td>
-							<td><s:property value="dateReception" /></td>
+							<th scope="row"><s:property value="codeart" /></th>
+							<td><s:property value="nomart" /></td>
+							<td><s:property value="prixart" /></td>
+							<td><s:property value="Quantite" /></td>
 						</tr>
 					</s:iterator>
 				</tbody>

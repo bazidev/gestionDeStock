@@ -38,10 +38,10 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Inventaire <span
+					<li class="active"><a href="<s:url action="filter-inventaire"/>">Inventaire <span
 							class="sr-only">(current)</span></a></li>
-					<li><a href="achats.jsp">Achats</a></li>
-					<li><a href="#">Article</a></li>
+					<li><a href="<s:url action="filter-achats"/>">Achats</a></li>
+					<li><a href="<s:url action="filter-articles"/>">Article</a></li>
 				</ul>
 			</div>
 
