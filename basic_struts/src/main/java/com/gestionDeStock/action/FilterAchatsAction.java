@@ -5,8 +5,10 @@ import java.util.List;
 import org.hibernate.property.access.spi.SetterFieldImpl;
 
 import com.gestionDeStock.beans.Achat;
+import com.gestionDeStock.beans.Article;
 import com.gestionDeStock.beans.Inventaire;
 import com.gestionDeStock.dao.AchatsDao;
+import com.gestionDeStock.dao.ArticleDao;
 import com.gestionDeStock.dao.InventaireDao;
 import com.gestionDeStock.dao.LoginDao;
 import com.opensymphony.xwork2.ActionSupport;
@@ -18,7 +20,7 @@ public class FilterAchatsAction extends ActionSupport{
     private String date = "";
     private List<Achat> achats ;
     private List<Achat> achatsAll;
-     
+    private List<Article> articleAll;
     
 	public List<Achat> getAchats() {
 		return achats;
@@ -61,9 +63,18 @@ public class FilterAchatsAction extends ActionSupport{
 	        System.out.println(article + "  "+date);
 	        	setAchats((List<Achat>) AchatsDao.inventaireByDateAndArticle(article, date));
 	    		setAchatsAll((List<Achat>) AchatsDao.allAchats());
+	    		setArticleAll(ArticleDao.getAllArticle());
 	            return SUCCESS;
 	    	
 	   }
+
+	public List<Article> getArticleAll() {
+		return articleAll;
+	}
+
+	public void setArticleAll(List<Article> articleAll) {
+		this.articleAll = articleAll;
+	}
 
 
 

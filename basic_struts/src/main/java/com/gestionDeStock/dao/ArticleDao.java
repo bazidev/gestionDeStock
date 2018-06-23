@@ -1,7 +1,9 @@
 package com.gestionDeStock.dao;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -20,17 +22,23 @@ public class ArticleDao {
 		List<Inventaire> invts= (List<Inventaire>) InventaireDao.allInventaire();
 		System.out.println(invts.size());
 		List<Article> arts = new ArrayList<Article>();
+		Set<Integer> ids = new HashSet<>();
 		Session session = HibernateUtil2.getSession();
 		if (session != null) {
 		
 			try {
 				for(Inventaire in : invts)
 				{
+					if(ids.contains(in.getCodeArt()))
+						continue;	
+					ids.add(in.getCodeArt());
 					Query query = session.createQuery("from Article where codeart = "+in.getCodeArt());
-					List tmp = query.list();
+					List<Article> tmp = query.list();
+					// pour eleminer les elements repeter 
+					
 					if(!tmp.isEmpty())
 					{
-						Article tmpA = (Article) tmp.get(0);
+						Article tmpA =  tmp.get(0);
 						tmpA.setQuantite(computeQuantite(tmpA.getCodeart(), date));
 						arts.add(tmpA);
 					}
@@ -182,6 +190,31 @@ public class ArticleDao {
 				System.out.println(query.getQueryString());
 				if(!query.list().isEmpty())
 					return (String) query.uniqueResult();
+				
+			} catch (Exception exception) {
+				System.out.println("Exception occred while reading user data: " + exception.getMessage());
+				return null;
+			}
+			finally {
+			     session.close();
+			   }
+
+		} else {
+			System.out.println("DB server down.....");
+		}
+		return null;
+	}
+
+
+	public static List<Article> getAllArticle() {
+		Session session = HibernateUtil2.getSession();
+		if (session != null) {
+		
+			try {
+				Query query = session.createQuery("from Article");
+				
+				if(!query.list().isEmpty())
+					return (List<Article>)query.list();
 				
 			} catch (Exception exception) {
 				System.out.println("Exception occred while reading user data: " + exception.getMessage());

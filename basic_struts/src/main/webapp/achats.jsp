@@ -85,6 +85,12 @@
 
 			<table class=" table table-striped">
 				<thead>
+				<tr>
+						<td colspan="1" style="text-align: left;"><input
+							data-toggle="modal" data-target="#addModal" type="button"
+							 class="btn  btn-block " id="addAchat"
+							value="Ajouter Achat" /></td>
+					</tr>
 					<tr>
 						<th scope="col">code d'achat</th>
 						<th scope="col">nom d'article</th>
@@ -104,6 +110,48 @@
 				</tbody>
 			</table>
 		</div>
+		
+		
+		<!-- modals -->
+			<!-- Modal -->
+			<div class="modal fade" id="addModal" tabindex="-1" role="dialog"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+				
+				<s:form action='ajouter-achat' style="margin-top:40px;">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">ajouter achat</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+					<select name="article" class="selectpicker" title="article .. "
+							data-live-search="true">
+								<s:iterator value="articleAll" status="articleStatus">
+										<option value="<s:property value="codeart" />"><s:property
+												value="nomart" /></option>
+									</s:iterator>
+						</select>
+							<br />
+						<s:textfield placeholder="quantite" type="number" name="quantity" min="0" step="1"/>
+						<input default="0" name="date" class="form-control" type="date" />
+						<br />
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">fermer</button>
+						  <s:submit value="ajouter" cssClass="btn btn-primary" />
+				
+						
+						</div>
+					</div>
+					</s:form>
+				</div>
+			</div>
+		
 	</div>
 
 

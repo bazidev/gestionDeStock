@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import com.gestionDeStock.beans.Inventaire;
 import com.gestionDeStock.utils.HibernateUtil;
@@ -85,4 +86,29 @@ public class InventaireDao {
 		}
 		return null;
 	}
+	
+	
+	//ajouter un inventaire
+	public static boolean add(Inventaire inventaire) {
+		Session session = HibernateUtil.getSession();
+		Transaction transaction = session.beginTransaction();
+		if (session != null) {
+			try {
+				session.save(inventaire);
+				transaction.commit();
+				return true;
+			} catch (Exception exception) {
+				System.out.println("Exception occred while reading user data: " + exception.getMessage());
+				return false;
+			}
+			finally {
+			     session.close();
+			}
+
+		} else {
+			System.out.println("DB server down.....");
+		}
+		return false;
+	}
+	
 }

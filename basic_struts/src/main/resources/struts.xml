@@ -38,6 +38,16 @@
 			<result name="success">/articles.jsp</result>
 			<result name="error">/articles.jsp</result>
 		</action>
+		
+		<action name="ajouter-inventaire"
+			class="com.gestionDeStock.action.AjouterInventaire" method="execute">
+			<result type="redirectAction">/filter-inventaire</result>
+		</action>
+		
+		<action name="ajouter-achat"
+			class="com.gestionDeStock.action.AjouterAchat" method="execute">
+			<result type="redirectAction">/filter-achats</result>
+		</action>
 	</package>
 
 </struts>

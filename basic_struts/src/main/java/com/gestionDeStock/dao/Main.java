@@ -1,5 +1,6 @@
 package com.gestionDeStock.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import com.gestionDeStock.beans.Achat;
@@ -34,7 +35,7 @@ public class Main {
 			
 			System.out.println(i.getDateInv());
 			System.out.println(i.getQteArt());*/
-			
+/*			
 			System.out.println("************************************");
 			List<Article> arts = (List<Article>) ArticleDao.articleByDate("2018-12-12");
 			System.err.println(arts.size());
@@ -46,7 +47,22 @@ public class Main {
 				System.out.println(art.getQuantite());
 			}
 			
-			LoginDao.login("admin", "admin");
+			LoginDao.login("admin", "admin");*/
+			
+		/*	Inventaire inv = new Inventaire();
+			inv.setCodeArt(8);
+			inv.setQteArt(20);
+			inv.setDescInv("description");
+			inv.setDateInv(new Date());
+			
+			boolean res = InventaireDao.add(inv);
+			System.out.println(res);*/
+		
+			List<Article> arts = ArticleDao.getAllArticle();
+			for(Article a : arts)
+			{
+				System.out.println(a.getNomart());
+			}
 	}
 
 }
