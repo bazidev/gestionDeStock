@@ -42,7 +42,9 @@
 					<li class="active"><a href="<s:url action="filter-achats"/>">Achats <span
 							class="sr-only">(current)</span></a></li>
 					<li><a href="<s:url action="filter-articles"/>">Article</a></li>
-				</ul>
+				</ul> <ul class="nav navbar-nav navbar-right">
+  					   <li><a href="/index.jsp">deconnecter</a></li>
+    				</ul>
 			</div>
 
 		</div>

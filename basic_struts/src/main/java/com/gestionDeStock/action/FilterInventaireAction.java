@@ -8,6 +8,10 @@ import com.gestionDeStock.dao.ArticleDao;
 import com.gestionDeStock.dao.InventaireDao;
 import com.opensymphony.xwork2.ActionSupport;
 
+
+
+
+//action pour filtrer et afficher les inventaires
 public class FilterInventaireAction extends ActionSupport{
 
     private static final long serialVersionUID = 1L;

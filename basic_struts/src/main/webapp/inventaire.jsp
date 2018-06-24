@@ -86,7 +86,11 @@
 			</div>
 			<!-- /.row -->
 
-
+<s:if test="hasActionMessages()">
+   <div class="welcome">
+      <s:actionmessage/>
+   </div>
+</s:if>
 
 			<table class=" table table-striped">
 				<thead>

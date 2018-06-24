@@ -111,7 +111,7 @@ public class InventaireDao {
 		return false;
 	}
 
-
+	//modifier un inventaire
 	public static boolean update(Inventaire inv) {
 		Session session = HibernateUtil.getSession();
 		Transaction transaction = session.beginTransaction();
@@ -134,7 +134,7 @@ public class InventaireDao {
 		return false;
 	}
 
-
+	//supprimer un inventaire
 	public static boolean remove(Inventaire inv) {
 		Session session = HibernateUtil.getSession();
 		Transaction transaction = session.beginTransaction();

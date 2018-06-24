@@ -8,6 +8,8 @@ import java.util.List;
 
 import com.gestionDeStock.beans.*;
 
+
+//action de login
 public class LoginAction extends ActionSupport {
  
     private static final long serialVersionUID = 1L;
@@ -24,7 +26,8 @@ public class LoginAction extends ActionSupport {
     		setInventaires((List<Inventaire>) InventaireDao.allInventaire());
             return SUCCESS;
     	}
-		return SUCCESS;
+    	addActionError("nom d'utilisateur ou mot de passe incorrect");
+		return ERROR;
     }
  
  
@@ -45,13 +48,17 @@ public class LoginAction extends ActionSupport {
 		this.password = password;
 	}
 	
+	
+	//validation des champs requis
 	public void validate(){
+		
 		if("".equals(getUserName())){
 			addFieldError("userName", getText("username.required"));
 		}
 		if("".equals(getPassword())){
 			addFieldError("password", getText("password.required"));
 		}
+		
 	}
 
 

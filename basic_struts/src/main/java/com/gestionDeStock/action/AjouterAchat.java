@@ -7,6 +7,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import java.text.SimpleDateFormat;
 import com.gestionDeStock.beans.*;
 
+//action pour ajouter achat
 public class AjouterAchat extends ActionSupport {
     private SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
     private static final long serialVersionUID = 1L;

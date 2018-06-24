@@ -13,6 +13,8 @@ import com.gestionDeStock.dao.InventaireDao;
 import com.gestionDeStock.dao.LoginDao;
 import com.opensymphony.xwork2.ActionSupport;
 
+
+//action pour filtrer et afficher les achats
 public class FilterAchatsAction extends ActionSupport{
 
     private static final long serialVersionUID = 1L;

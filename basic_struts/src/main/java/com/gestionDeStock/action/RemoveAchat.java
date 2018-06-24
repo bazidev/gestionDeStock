@@ -6,6 +6,8 @@ import com.gestionDeStock.dao.AchatsDao;
 import com.gestionDeStock.dao.InventaireDao;
 import com.opensymphony.xwork2.ActionSupport;
 
+
+//action de supprission d'achat
 public class RemoveAchat extends ActionSupport {
     private static final long serialVersionUID = 1L;
     private int achat;

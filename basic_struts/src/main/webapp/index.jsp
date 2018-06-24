@@ -25,7 +25,11 @@
 		<div class="row  justify-content-md-center">
 
 			<div class="col col-lg-5" style="margin: auto; float: none;">
-
+				<s:if test="hasActionErrors()">
+					<div class="errors">
+						<s:actionerror />
+					</div>
+				</s:if>
 				<s:form action='login' style="margin-top:40px;">
 					<s:textfield name="userName" label="Nom d'etulisateur" />
 					<s:password name="password" label="mot de pass" />

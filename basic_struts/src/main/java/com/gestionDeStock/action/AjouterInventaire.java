@@ -6,6 +6,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import java.text.SimpleDateFormat;
 import com.gestionDeStock.beans.*;
 
+//action pour ajouter inventaire
 public class AjouterInventaire extends ActionSupport {
     private SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
     private static final long serialVersionUID = 1L;
@@ -60,8 +61,11 @@ public class AjouterInventaire extends ActionSupport {
         inv.setDateInv(sdf1.parse(date));
     	if(InventaireDao.add(inv))
     	{
+    		addActionMessage("inventaire a été bien ajouter ");
             return SUCCESS;
     	}
+
+		addActionMessage("oops : l'inventaire n'a pas été ajouter ");
 		return SUCCESS;
     }
 

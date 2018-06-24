@@ -112,7 +112,7 @@ public class AchatsDao {
 			return false;
 		}
 
-
+		//supprimer un achat
 		public static boolean remove(Achat ach) {
 			Session session = HibernateUtil.getSession();
 			Transaction transaction = session.beginTransaction();
@@ -135,7 +135,7 @@ public class AchatsDao {
 			return false;
 		}
 
-
+		//modifier un achat
 		public static boolean update(Achat ach) {
 			Session session = HibernateUtil.getSession();
 			Transaction transaction = session.beginTransaction();

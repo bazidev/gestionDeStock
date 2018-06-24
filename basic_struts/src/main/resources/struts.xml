@@ -6,9 +6,13 @@
 <struts>
 
 	<constant name="struts.devMode" value="true" />
-	  <constant name="struts.action.extension" value="html"/> 
-	  <constant name="struts.ui.theme" value="bootstrap" />
-
+	<constant name="struts.action.extension" value="html" />
+	<constant name="struts.ui.theme" value="bootstrap" />
+	<constant name="struts.xwork.chaining.copyErrors" value="true" />
+	<constant name="struts.xwork.chaining.copyFieldErrors"
+		value="true" />
+	<constant name="struts.xwork.chaining.copyMessages"
+		value="true" />
 	<package name="basicstruts2" extends="struts-default">
 
 		<action name="index">
@@ -19,51 +23,54 @@
 			class="com.gestionDeStock.action.LoginAction" method="execute">
 			<result name="success">/inventaire.jsp</result>
 			<result name="input">/index.jsp</result>
+			<result name="error">/index.jsp</result>
 		</action>
-		
+
 		<action name="filter-inventaire"
-			class="com.gestionDeStock.action.FilterInventaireAction" method="execute">
+			class="com.gestionDeStock.action.FilterInventaireAction"
+			method="execute">
 			<result name="success">/inventaire.jsp</result>
 			<result name="error">/inventaire.jsp</result>
 		</action>
-		
+
 		<action name="filter-achats"
 			class="com.gestionDeStock.action.FilterAchatsAction" method="execute">
 			<result name="success">/achats.jsp</result>
 			<result name="error">/achats.jsp</result>
 		</action>
-		
+
 		<action name="filter-articles"
-			class="com.gestionDeStock.action.FilterArticleAction" method="execute">
+			class="com.gestionDeStock.action.FilterArticleAction"
+			method="execute">
 			<result name="success">/articles.jsp</result>
 			<result name="error">/articles.jsp</result>
 		</action>
-		
+
 		<action name="ajouter-inventaire"
 			class="com.gestionDeStock.action.AjouterInventaire" method="execute">
 			<result type="redirectAction">/filter-inventaire</result>
 		</action>
-		
+
 		<action name="ajouter-achat"
 			class="com.gestionDeStock.action.AjouterAchat" method="execute">
 			<result type="redirectAction">/filter-achats</result>
 		</action>
-		
+
 		<action name="modifier-inventaire"
 			class="com.gestionDeStock.action.ModifyInventaire" method="execute">
 			<result type="redirectAction">/filter-inventaire</result>
 		</action>
-		
+
 		<action name="supprimer-inventaire"
 			class="com.gestionDeStock.action.RemoveInventaire" method="execute">
 			<result type="redirectAction">/filter-inventaire</result>
 		</action>
-		
-				<action name="modifier-achat"
+
+		<action name="modifier-achat"
 			class="com.gestionDeStock.action.ModifyAchat" method="execute">
 			<result type="redirectAction">/filter-achats</result>
 		</action>
-		
+
 		<action name="supprimer-achat"
 			class="com.gestionDeStock.action.RemoveAchat" method="execute">
 			<result type="redirectAction">/filter-achats</result>
