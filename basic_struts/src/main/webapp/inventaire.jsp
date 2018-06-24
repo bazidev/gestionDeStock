@@ -44,6 +44,9 @@
 					<li><a href="<s:url action="filter-achats"/>">Achats</a></li>
 					<li><a href="<s:url action="filter-articles"/>">Article</a></li>
 				</ul>
+				    <ul class="nav navbar-nav navbar-right">
+  					   <li><a href="/index.jsp">deconnecter</a></li>
+    				</ul>
 			</div>
 
 		</div>
@@ -60,9 +63,9 @@
 								<button class="btn btn-default">#</button>
 							</span> <select name="article" class="selectpicker" title="article .. "
 								data-live-search="true">
-								<s:iterator value="inventairesAll" status="inventairesStatus">
-									<option value="<s:property value="codeArt" />"><s:property
-											value="nomArt" /></option>
+								<s:iterator value="articleAll" status="articleStatus">
+									<option value="<s:property value="codeart" />"><s:property
+											value="nomart" /></option>
 								</s:iterator>
 							</select>
 						</div>
@@ -100,6 +103,7 @@
 						<th scope="col">quantite</th>
 						<th scope="col">description</th>
 						<th scope="col">date</th>
+						<th scope="col">modifier</th>
 						<th scope="col">#</th>
 					</tr>
 				</thead>
@@ -107,14 +111,20 @@
 					<s:iterator value="inventaires" status="inventairesStatus">
 						<tr>
 							<th scope="row"><s:property value="codeInv" /></th>
-							
+
 							<td id="codeArt"><s:property value="codeArt" /></td>
 							<td id="nomArt"><s:property value="nomArt" /></td>
-							<td id="qteArt"><s:property  value="qteArt" /></td>
+							<td id="qteArt"><s:property value="qteArt" /></td>
 							<td id="descInv"><s:property value="descInv" /></td>
-							<td id="dateInv"><s:property value="dateInv" /></td>
+							<td id="dateInv"><s:date name="dateInv" format="MM/dd/yyyy" /></td>
 							<td><input data-toggle="modal" data-target="#editModal"
 								type="button" class=" editInv btn  btn-block " value="modifier" /></td>
+							<td>
+								<button type="button" class="conf-sup btn btn-dark"
+									data-toggle="modal" data-target="#confirmModal">
+									<span class="glyphicon glyphicon-trash"></span>
+								</button>
+							</td>
 						</tr>
 					</s:iterator>
 				</tbody>
@@ -140,7 +150,7 @@
 
 								<select name="article" class="selectpicker" title="article .. "
 									data-live-search="true">
-										<s:iterator value="articleAll" status="articleStatus">
+									<s:iterator value="articleAll" status="articleStatus">
 										<option value="<s:property value="codeart" />"><s:property
 												value="nomart" /></option>
 									</s:iterator>
@@ -170,8 +180,9 @@
 			<div class="modal fade" id="editModal" tabindex="-1" role="dialog"
 				aria-labelledby="exampleModalLabel" aria-hidden="true">
 				<div class="modal-dialog" role="document">
-					<div style="display:none" id="inv-id"></div>
-					<s:form action='ajouter-inventaire' style="margin-top:40px;">
+					<s:form action='modifier-inventaire' style="margin-top:40px;">
+
+						<s:hidden name="inventaire" id="inv-id" />
 						<div class="modal-content">
 							<div class="modal-header">
 								<h5 class="modal-title" id="exampleModalLabel">modifier
@@ -183,26 +194,59 @@
 							</div>
 							<div class="modal-body">
 
-								<select id="articlePicker" name="article" class="selectpicker" title="article .. "
-									data-live-search="true">
+								<select id="articlePicker" name="article" class="selectpicker"
+									title="article .. " data-live-search="true">
 									<s:iterator value="articleAll" status="articleStatus">
 										<option value="<s:property value="codeart" />"><s:property
 												value="nomart" /></option>
 									</s:iterator>
 								</select> <br />
-								<s:textfield   id="quantite" placeholder="quantite" type="number"
+								<s:textfield id="quantite" placeholder="quantite" type="number"
 									name="quantity" min="0" step="1" />
-								<input id="date" default="0" name="date" class="form-control" type="date" />
-								<br />
-								<s:textarea  id="description" name="description" cols="2"
+								<input id="date" default="0" name="date" class="form-control"
+									type="date" /> <br />
+								<s:textarea id="description" name="description" cols="2"
 									placeholder="description">
 								</s:textarea>
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary"
 									data-dismiss="modal">fermer</button>
-								<s:submit value="suprimer" cssClass="btn btn-danger	" />
 								<s:submit value="modifier" cssClass="btn btn-primary" />
+
+
+							</div>
+						</div>
+					</s:form>
+				</div>
+			</div>
+			
+			
+			
+			<!-- confirme suppression modal -->
+			<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<s:form action='supprimer-inventaire' style="margin-top:40px;">
+
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Confirmation !</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+									<p>Etes-vous sur de vouloir supprimer 
+									<s:hidden name="inventaire" id="inv-id" />
+									?</p>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">non</button>
+									<s:property value="inventaire" />
+								<s:submit value="oui" cssClass="btn btn-primary" />
 
 
 							</div>

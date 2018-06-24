@@ -111,4 +111,50 @@ public class AchatsDao {
 			}
 			return false;
 		}
+
+
+		public static boolean remove(Achat ach) {
+			Session session = HibernateUtil.getSession();
+			Transaction transaction = session.beginTransaction();
+			if (session != null) {
+				try {
+					session.delete(ach);
+					transaction.commit();
+					return true;
+				} catch (Exception exception) {
+					System.out.println("Exception occred while reading user data: " + exception.getMessage());
+					return false;
+				}
+				finally {
+				     session.close();
+				}
+
+			} else {
+				System.out.println("DB server down.....");
+			}
+			return false;
+		}
+
+
+		public static boolean update(Achat ach) {
+			Session session = HibernateUtil.getSession();
+			Transaction transaction = session.beginTransaction();
+			if (session != null) {
+				try {
+					session.update(ach);
+					transaction.commit();
+					return true;
+				} catch (Exception exception) {
+					System.out.println("Exception occred while reading user data: " + exception.getMessage());
+					return false;
+				}
+				finally {
+				     session.close();
+				}
+
+			} else {
+				System.out.println("DB server down.....");
+			}
+			return false;
+		}
 }

@@ -59,9 +59,10 @@
 							<button class="btn btn-default">#</button>
 						</span> <select name="article" class="selectpicker" title="article .. "
 							data-live-search="true">
-							<s:iterator value="achatsAll" status="achatsStatus">
-								<option  value="<s:property value="codeArt" />"><s:property value="nomArt" /></option>
-							</s:iterator>
+								<s:iterator value="articleAll" status="articleStatus">
+										<option value="<s:property value="codeart" />"><s:property
+												value="nomart" /></option>
+									</s:iterator>
 						</select>
 					</div>
 					<!-- /input-group -->
@@ -93,18 +94,32 @@
 					</tr>
 					<tr>
 						<th scope="col">code d'achat</th>
+						<th scope="col">code d'article</th>
 						<th scope="col">nom d'article</th>
 						<th scope="col">quantite achete</th>
 						<th scope="col">date de reception</th>
+						<th scope="col">modifier</th>
+						<th scope="col">#</th>
 					</tr>
 				</thead>
 				<tbody>
 					<s:iterator value="achats" status="achatsStatus">
 						<tr>
 							<th scope="row"><s:property value="codeAchat" /></th>
-							<td><s:property value="nomArt" /></td>
-							<td><s:property value="qteAchete" /></td>
-							<td><s:property value="dateReception" /></td>
+							
+							<td id="codeArt"><s:property value="codeArt" /></td>
+							<td id="nomArt"><s:property value="nomArt" /></td>
+							<td id="qte"><s:property value="qteAchete" /></td>
+							<td id="date"><s:date name="dateReception" format="MM/dd/yyyy" /></td>
+							<td>
+							<input data-toggle="modal" data-target="#editAchatModal"
+								type="button" class=" editAchat btn  btn-block " value="modifier" /></td>
+							<td>
+								<button type="button" class="conf-sup-achat btn btn-dark"
+									data-toggle="modal" data-target="#confirmAchatModal">
+									<span class="glyphicon glyphicon-trash"></span>
+								</button>
+							</td>
 						</tr>
 					</s:iterator>
 				</tbody>
@@ -148,6 +163,86 @@
 						
 						</div>
 					</div>
+					</s:form>
+				</div>
+			</div>
+			
+			
+			
+
+			<!-- modifier modal -->
+			<div class="modal fade" id="editAchatModal" tabindex="-1" role="dialog"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<s:form action='modifier-achat' style="margin-top:40px;">
+
+						<s:hidden name="achat" id="achat-id" />
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">modifier
+									achat</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+
+								<select id="articlePicker" name="article" class="selectpicker"
+									title="article .. " data-live-search="true">
+									<s:iterator value="articleAll" status="articleStatus">
+										<option value="<s:property value="codeart" />"><s:property
+												value="nomart" /></option>
+									</s:iterator>
+								</select> <br />
+								<s:textfield id="quantite" placeholder="quantite" type="number"
+									name="quantity" min="0" step="1" />
+								<input id="date" default="0" name="date" class="form-control"
+									type="date" /> <br />
+								
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">fermer</button>
+								<s:submit value="modifier" cssClass="btn btn-primary" />
+
+
+							</div>
+						</div>
+					</s:form>
+				</div>
+			</div>
+			
+			
+			
+			<!-- confirme suppression modal -->
+			<div class="modal fade" id="confirmAchatModal" tabindex="-1" role="dialog"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<s:form action='supprimer-achat' style="margin-top:40px;">
+
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Confirmation !</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+									<p>Etes-vous sur de vouloir supprimer 
+									<s:hidden name="achat" id="achat-id" />
+									?</p>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">non</button>
+									<s:property value="achat" />
+								<s:submit value="oui" cssClass="btn btn-primary" />
+
+
+							</div>
+						</div>
 					</s:form>
 				</div>
 			</div>

@@ -2,7 +2,6 @@ package com.gestionDeStock.action;
 
 import com.gestionDeStock.dao.InventaireDao;
 import com.gestionDeStock.dao.LoginDao;
-import com.gestionDeStock.model.MessageStore;
 import com.opensymphony.xwork2.ActionSupport;
 
 import java.util.List;

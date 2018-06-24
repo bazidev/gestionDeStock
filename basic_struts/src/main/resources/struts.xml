@@ -48,6 +48,27 @@
 			class="com.gestionDeStock.action.AjouterAchat" method="execute">
 			<result type="redirectAction">/filter-achats</result>
 		</action>
+		
+		<action name="modifier-inventaire"
+			class="com.gestionDeStock.action.ModifyInventaire" method="execute">
+			<result type="redirectAction">/filter-inventaire</result>
+		</action>
+		
+		<action name="supprimer-inventaire"
+			class="com.gestionDeStock.action.RemoveInventaire" method="execute">
+			<result type="redirectAction">/filter-inventaire</result>
+		</action>
+		
+				<action name="modifier-achat"
+			class="com.gestionDeStock.action.ModifyAchat" method="execute">
+			<result type="redirectAction">/filter-achats</result>
+		</action>
+		
+		<action name="supprimer-achat"
+			class="com.gestionDeStock.action.RemoveAchat" method="execute">
+			<result type="redirectAction">/filter-achats</result>
+		</action>
+
 	</package>
 
 </struts>

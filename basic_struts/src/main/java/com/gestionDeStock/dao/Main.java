@@ -58,11 +58,22 @@ public class Main {
 			boolean res = InventaireDao.add(inv);
 			System.out.println(res);*/
 		
-			List<Article> arts = ArticleDao.getAllArticle();
+			/*List<Article> arts = ArticleDao.getAllArticle();
 			for(Article a : arts)
 			{
 				System.out.println(a.getNomart());
-			}
+			}*/
+		
+		Inventaire inv = new Inventaire();
+		inv.setCodeInv(1);
+        inv.setCodeArt(8);
+        inv.setQteArt(44);
+        inv.setDescInv("ssss");
+        inv.setDateInv(new Date());
+    	if(InventaireDao.update(inv))
+    	{
+            System.out.println("worked");
+    	}
 	}
 
 }

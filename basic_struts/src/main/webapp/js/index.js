@@ -20,7 +20,7 @@ $(document).ready(function() {
 
 	});
 	
-	//pass row values to edit modal
+	//pass row values to edit inventaire modal
 	
 	$(document).on("click", ".editInv", function () {
 	     var code = $(this).parent().parent().find("th").html();
@@ -28,18 +28,82 @@ $(document).ready(function() {
 	     var qteArt = $(this).parent().parent().find("#qteArt").html();
 	     var descInv = $(this).parent().parent().find("#descInv").html();
 	     var dateInv = $(this).parent().parent().find("#dateInv").html();
-	     console.log(code);
-	     console.log(dateInv);
-	     $("#editModal #inv-id").html( code );
+	     
+	     $("#editModal #inv-id").val( code );
 	     $("#editModal #quantite").val( qteArt	 );
 	     $("#editModal #description").val( descInv );
-	    
-	     $("#editModal #date").val( dateInv );
-	     $('#articlePicker').val(codeArt);
+	      $('#articlePicker').val(codeArt);
 	     $('#articlePicker').change();
-	     // As pointed out in comments, 
-	     // it is superfluous to have to manually call the modal.
-	     // $('#addBookDialog').modal('show');
+	     
+	     //set date value
+	     var date = new Date(dateInv);
+	     var day = ("0" + date.getDate()).slice(-2);
+	     var month = ("0" + (date.getMonth() + 1)).slice(-2);
+
+	     var today = date.getFullYear()+"-"+(month)+"-"+(day) ;
+	     $("#editModal #date").val(today);
+
+	     console.log(dateInv);
+
+	     console.log(date);
+	     console.log(today)
+	     
 	});
 	
+	// modal de confirmation de supprission d'inventaire
+	$(document).on("click", ".conf-sup", function () {
+	     var code = $(this).parent().parent().find("th").html();
+	   
+	     $("#confirmModal #inv-id").val( code );
+	    
+	});
+	
+	
+	
+	//pass row values to edit achat modal
+	
+	$(document).on("click", ".editAchat", function () {
+	     var code = $(this).parent().parent().find("th").html();
+	     var codeArt = $(this).parent().parent().find("#codeArt").html();
+	     var qteArt = $(this).parent().parent().find("#qte").html();
+	     var dateInv = $(this).parent().parent().find("#date").html();
+	     
+	     $("#editAchatModal #achat-id").val( code );
+	     $("#editAchatModal #quantite").val( qteArt	 );
+	      $('#articlePicker').val(codeArt);
+	     $('#articlePicker').change();
+	     
+	     //set date value
+	     var date = new Date(dateInv);
+	     var day = ("0" + date.getDate()).slice(-2);
+	     var month = ("0" + (date.getMonth() + 1)).slice(-2);
+
+	     var today = date.getFullYear()+"-"+(month)+"-"+(day) ;
+	     $("#editAchatModal #date").val(today);
+	     
+	     console.log(code);
+	     console.log(dateInv);
+
+	     console.log(date);
+	     console.log(today)
+	     
+	});
+	
+	// modal de confirmation de supprission d'achat
+	$(document).on("click", ".conf-sup-achat", function () {
+	     var code = $(this).parent().parent().find("th").html();
+	   
+	     $("#confirmAchatModal #achat-id").val( code );
+	    
+	});
+	
+	
 });
+
+function toDate(dateStr) {
+	  var parts = dateStr.split(" ");
+	  var date = parts[0];
+	  console.log("date : "+date);
+	  var dateparts = date.split("/");
+	  return new Date("20"+dateparts[2],dateparts[0], dateparts[1])
+}
